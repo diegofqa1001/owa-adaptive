@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Reporte — Motor OWA Adaptativo</title>
+<style>
+ body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:980px;
+      margin:2rem auto;padding:0 1rem;color:#111;background:#fff;line-height:1.5}
+ h1{color:#0072B2} h2{color:#0072B2;border-bottom:2px solid #56B4E9;padding-bottom:.2rem}
+ table{border-collapse:collapse;width:100%;margin:1rem 0}
+ th,td{border:1px solid #ccc;padding:.4rem .6rem;text-align:right}
+ th:first-child,td:first-child{text-align:left}
+ th{background:#f2f8fc} figure{margin:1.5rem 0} figcaption{color:#555;font-size:.9rem}
+ .kpi{display:inline-block;background:#f2f8fc;border:1px solid #56B4E9;border-radius:8px;
+      padding:.6rem 1rem;margin:.3rem}
+</style></head><body>
+<h1>Motor de recomendación adaptativo OWA — reporte reproducible</h1>
+<p>Panel sintético reproducible (semilla fija). Generado por
+<code>scripts/run_demo.py</code>. Cierra OE2 (validación), OE3 (adaptativo) y OE4
+(producto + validación empírica).</p>
+
+<div>
+ <span class="kpi"><b>Índice de inversión</b><br>sin corrección: -0.595</span>
+ <span class="kpi"><b>Índice de inversión</b><br>con corrección: -0.690</span>
+ <span class="kpi"><b>¿Inversión corregida?</b><br>revisar</span>
+</div>
+
+<h2>1. Actitud por perfil (OE2)</h2>
+<figure><img src="fig_orness.png" style="max-width:100%"><figcaption>Orness objetivo de los 8 perfiles conductuales.</figcaption></figure>
+
+<h2>2. Detección de régimen (OE3)</h2>
+<figure><img src="fig_stress.png" style="max-width:100%"><figcaption>Estrés de régimen s(t) derivado de VIX/EPU.</figcaption></figure>
+
+<h2>3. Backtest por perfil (OE4)</h2>
+<table><thead><tr><th>Perfil</th><th>Retorno an.</th><th>Vol an.</th>
+<th>Sharpe</th><th>Máx DD</th><th>RMSE vol</th><th>Orness ef. medio</th></tr></thead>
+<tbody>
+<tr><td>Guardian</td><td>18.03%</td><td>14.90%</td><td>1.210</td><td>-14.24%</td><td>0.044</td><td>0.141</td></tr>
+<tr><td>Sentinel</td><td>18.00%</td><td>14.78%</td><td>1.218</td><td>-14.96%</td><td>0.043</td><td>0.196</td></tr>
+<tr><td>Custodian</td><td>17.59%</td><td>14.63%</td><td>1.202</td><td>-16.22%</td><td>0.042</td><td>0.252</td></tr>
+<tr><td>Balancer</td><td>17.30%</td><td>14.48%</td><td>1.195</td><td>-18.26%</td><td>0.042</td><td>0.308</td></tr>
+<tr><td>Navigator</td><td>17.46%</td><td>14.43%</td><td>1.210</td><td>-20.05%</td><td>0.040</td><td>0.363</td></tr>
+<tr><td>Strategist</td><td>18.04%</td><td>14.39%</td><td>1.254</td><td>-20.11%</td><td>0.039</td><td>0.419</td></tr>
+<tr><td>Pioneer</td><td>18.35%</td><td>14.48%</td><td>1.268</td><td>-21.18%</td><td>0.038</td><td>0.474</td></tr>
+<tr><td>Visionary</td><td>18.45%</td><td>14.57%</td><td>1.266</td><td>-22.06%</td><td>0.038</td><td>0.530</td></tr>
+</tbody></table>
+<figure><img src="fig_equity.png" style="max-width:100%"><figcaption>Curvas de capital por perfil.</figcaption></figure>
+
+<h2>4. Adaptativo vs estático (OE3)</h2>
+<figure><img src="fig_adaptive.png" style="max-width:100%"><figcaption>El componente adaptativo reduce el drawdown en regímenes de estrés.</figcaption></figure>
+
+<h2>5. Corrección de la inversión multicriterio (Artículo 3)</h2>
+<figure><img src="fig_inversion.png" style="max-width:100%"><figcaption>Tras la corrección espectral, mayor orness implica mayor riesgo realizado (monotonía restaurada).</figcaption></figure>
+
+<hr><p style="color:#777;font-size:.85rem">Quintero Avellaneda, D. — Universidad Nacional de Colombia, Sede Manizales.</p>
+</body></html>
