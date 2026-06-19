@@ -23,8 +23,9 @@ bibliography: paper.bib
 multicriteria asset scores with Ordered Weighted Averaging (OWA) operators whose attitude (*orness*) is
 determined by a taxonomy of eight **behavioral risk profiles** and dynamically modulated by the **market
 regime** inferred from uncertainty signals (VIX and Economic Policy Uncertainty). The package implements an
-**induced OWA (IOWA)** adaptation mechanism, a **spectral correction** that prevents the multicriteria
-"investor inversion" effect, and a reproducible backtesting harness. It ships with a synthetic, seed-fixed
+**induced OWA (IOWA)** adaptation mechanism, a **spectral correction** (ZCA whitening) that decorrelates the
+criteria to diagnose and mitigate the multicriteria "investor inversion" effect, and a reproducible backtesting
+harness. It ships with a synthetic, seed-fixed
 market panel so that every result is reproducible offline, alongside optional loaders for real data.
 
 # Statement of need
@@ -48,8 +49,11 @@ interactive dashboard.
   plus the analytic maximum-entropy solution [@FullerMajlender2001].
 - **Regime-adaptive IOWA.** A regime stress index `s(t)` derived from standardized VIX/EPU contracts the
   effective orness toward a defensive floor, monotonically.
-- **Spectral correction.** A ZCA whitening of criteria restores monotonicity between profile orness and
-  realized portfolio risk, diagnosed by an inversion index (Spearman rank correlation).
+- **Spectral correction.** A ZCA whitening that **decorrelates** the criteria; an **inversion index** (Spearman
+  rank correlation between profile orness and realized portfolio risk) **diagnoses** the multicriteria inversion.
+  Full restoration of monotonicity corresponds to constructed scenarios with correlation-induced inversion (per
+  the A3 theorem); on the generic synthetic panel the index diagnoses the effect without guaranteeing its
+  correction.
 - **Validation.** Rolling-window backtesting with Sharpe, maximum drawdown, and a risk-calibration RMSE, plus
   adaptive-vs-static comparison.
 
