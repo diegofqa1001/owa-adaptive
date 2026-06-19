@@ -9,7 +9,7 @@ prueba ejecutable que lo evidencia.
 | **OE2** | Construir y validar una taxonomía difusa-OWA de 8 perfiles conductuales | 8 perfiles × 7 dimensiones; puente conductual→orness; concordancia (W de Kendall) | `profiles.py` | `pytest tests/test_profiles.py` |
 | **OE3** | Diseñar el modelo adaptativo de recomendación OWA-difuso | IOWA inducido por VIX/EPU; modulación monótona del orness por estrés de régimen | `regimes.py`, `adaptive.py` | `pytest tests/test_adaptive.py` |
 | **OE4** | Validar empíricamente y entregar software de código abierto | Backtest reproducible (Sharpe, MDD, RMSE), adaptativo vs estático; repo + tests + API + DOI | `backtest.py`, `recommender.py`, `api.py`, todo el repo | `python scripts/run_demo.py` |
-| **A3** | Teorema de inversión multicriterio + corrección espectral | Índice de inversión y blanqueo espectral que restaura monotonía orness→riesgo | `spectral.py` | `pytest tests/test_spectral.py` |
+| **A3** | Teorema de inversión multicriterio + corrección espectral | Índice de inversión (diagnóstico) y blanqueo espectral ZCA que **decorrelaciona** los criterios; la **restauración plena** de la monotonía orness→riesgo corresponde al escenario construido de A3 (pendiente; ver nota de alcance en `spectral.py`) | `spectral.py` | `pytest tests/test_spectral.py` |
 
 ## Cómo lo verifica el jurado en 4 pasos
 

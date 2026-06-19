@@ -77,9 +77,17 @@ mecanismo es **monótono y auditable**: a mayor estrés, menor orness efectivo, 
 A3 demuestra que, bajo cierta estructura de correlación entre criterios, el scoring multicriterio puede **invertir**
 el ordenamiento de riesgo pretendido (un perfil conservador termina con una cartera más agresiva que uno
 arriesgado). Definimos un **índice de inversión** como la correlación de rangos (Spearman) entre el *orness* del
-perfil y el **riesgo realizado** de su cartera; debe ser positiva y monótona. La **corrección espectral**
-decorrelaciona los criterios (blanqueo ZCA basado en la matriz de correlación de criterios) antes de la agregación
-OWA, restaurando la monotonía `orness → riesgo`. El módulo reporta el índice antes/después.
+perfil y el **riesgo realizado** de su cartera; idealmente debería ser positiva y monótona. La **corrección
+espectral** decorrelaciona los criterios (blanqueo ZCA basado en la matriz de correlación de criterios) antes de
+la agregación OWA, **eliminando la correlación que puede inducir la inversión**. El módulo reporta el índice
+antes/después.
+
+**Alcance (importante).** El blanqueo ZCA decorrelaciona los criterios de forma verificable. La **restauración
+plena** de la monotonía `orness → riesgo` es el resultado del teorema de A3 bajo inversión *inducida por
+correlación*, y se demuestra en **escenarios construidos** con esa estructura. En el panel sintético genérico el
+índice de inversión solo **diagnostica** el efecto y puede permanecer negativo: la decorrelación por sí sola no
+garantiza la corrección. La construcción del escenario A3 fiel está pendiente de alinearse con el método del
+artículo A3.
 
 ### 2.6 Dinámica del inversor (lazo de realimentación conductual)
 No solo el mercado es dinámico: el inversor también. Tras cada horizonte de inversión, la actitud se actualiza
@@ -168,7 +176,7 @@ repo_OWA/
 | API | `uvicorn owa_adaptive.api:app` | `/recommend` devuelve cartera; `/backtest` métricas |
 
 **Criterios de éxito (validación definitiva OE2/OE3/OE4):**
-- Monotonía `orness(perfil) → riesgo realizado` (Spearman ≥ 0.9 tras corrección espectral).
+- El blanqueo ZCA decorrelaciona los criterios (verificable en `tests/test_spectral.py`).
+- Monotonía `orness(perfil) → riesgo realizado` (Spearman ≥ 0.9) en el **escenario construido** A3 con inversión inducida por correlación (pendiente de implementar conforme al artículo A3).
 - El adaptativo reduce el máximo drawdown frente al estático en regímenes de estrés.
-- Índice de inversión positivo tras corrección (negativo o no-monótono antes, en escenarios construidos).
 - W de Kendall de concordancia de las dimensiones por perfil sobre el umbral de acuerdo.

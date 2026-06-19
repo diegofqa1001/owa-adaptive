@@ -34,7 +34,7 @@ Abrir `outputs/reporte.html` en el navegador. Puntos a observar:
 - **Detección de régimen**: el estrés s(t) sube en los periodos de alta volatilidad.
 - **Backtest**: tabla de Sharpe, volatilidad, drawdown y RMSE de volatilidad por perfil.
 - **Adaptativo vs estático**: el adaptativo reduce el máximo drawdown.
-- **Inversión (A3)**: el índice de inversión pasa de bajo/no-monótono a ≈ +1 tras la corrección espectral.
+- **Inversión (A3)**: el índice de inversión (Spearman entre orness del perfil y riesgo realizado) **diagnostica** la inversión multicriterio; la corrección espectral **decorrelaciona** los criterios (verificable). Nota de alcance: en el panel sintético genérico la decorrelación por sí sola no restaura la monotonía positiva (el índice puede seguir negativo); la **restauración plena** corresponde al escenario construido del teorema A3, cuya implementación fiel está pendiente de alinearse con el artículo. Véase la nota en `spectral.py` y `docs/blueprint.md`.
 
 ## 3. Asistente interactivo (en vivo, recomendado para la defensa)
 

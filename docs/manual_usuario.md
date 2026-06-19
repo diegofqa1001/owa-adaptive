@@ -165,7 +165,7 @@ Ajústalos **antes de empezar** el recorrido:
 | **Activos por portafolio** | Cuántos activos entran en la cartera (top-N). |
 | **Horizonte por periodo** | Días que se mantiene la cartera en cada periodo (≈ meses). |
 | **Adaptación al régimen de mercado (OE3)** | Si está activo, en mercados tensos (VIX/EPU altos) la cartera se vuelve más defensiva. |
-| **Corrección espectral (A3)** | Evita la "inversión multicriterio": que un perfil conservador termine con más riesgo que uno agresivo. |
+| **Corrección espectral (A3)** | Decorrelaciona los criterios (blanqueo ZCA) para **mitigar** la "inversión multicriterio": que un perfil conservador termine con más riesgo que uno agresivo. |
 | **🔄 Reiniciar** | Vuelve al paso 1 y borra el progreso. |
 
 > **Consejo:** para ver un camino donde alguna cosecha sea **negativa** (y el inversor migre hacia un perfil
