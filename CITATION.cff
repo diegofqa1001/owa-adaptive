@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Si usa este software, por favor cítelo como se indica."
+title: "owa-adaptive: Motor de recomendación adaptativo OWA con perfiles conductuales"
+authors:
+  - family-names: "Quintero Avellaneda"
+    given-names: "Diego Fernando"
+    affiliation: "Universidad Nacional de Colombia, Sede Manizales"
+version: 1.0.0
+date-released: 2026-06-15
+license: MIT
+keywords:
+  - OWA
+  - IOWA
+  - behavioral finance
+  - portfolio selection
+  - uncertainty
+repository-code: "https://github.com/USUARIO/repo_OWA"
