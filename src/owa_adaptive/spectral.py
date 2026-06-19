@@ -7,8 +7,14 @@ más agresiva que uno arriesgado. Este módulo:
 
 - mide la inversión con un **índice de inversión** (correlación de rangos entre el
   orness del perfil y el riesgo realizado de su cartera);
-- la **corrige** decorrelacionando los criterios (blanqueo ZCA) antes de agregar,
-  restaurando la monotonía ``orness → riesgo``.
+- la **mitiga** decorrelacionando los criterios (blanqueo ZCA) antes de agregar,
+  eliminando la correlación que puede inducir la inversión.
+
+Nota de alcance: el blanqueo ZCA decorrelaciona los criterios (verificable en
+``tests/test_spectral.py``). La **restauración plena** de la monotonía
+``orness → riesgo`` corresponde al teorema de A3 bajo inversión inducida por
+correlación; en el panel sintético genérico el índice de inversión solo
+**diagnostica** el efecto y no garantiza su corrección.
 """
 from __future__ import annotations
 

@@ -110,7 +110,7 @@ def _write_html(output_dir, results, comp, idx_naive, idx_corr, figures) -> str:
             return f'<figure><img src="{fn}" style="max-width:100%"><figcaption>{caption}</figcaption></figure>'
         return ""
 
-    fixed = "SÍ" if (idx_corr >= 0.9 and idx_corr > idx_naive) else "revisar"
+    fixed = "sí" if (idx_corr >= 0.9 and idx_corr > idx_naive) else "no (panel genérico)"
     html = f"""<!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <title>Reporte — Motor OWA Adaptativo</title>
@@ -133,7 +133,7 @@ def _write_html(output_dir, results, comp, idx_naive, idx_corr, figures) -> str:
 <div>
  <span class="kpi"><b>Índice de inversión</b><br>sin corrección: {idx_naive:.3f}</span>
  <span class="kpi"><b>Índice de inversión</b><br>con corrección: {idx_corr:.3f}</span>
- <span class="kpi"><b>¿Inversión corregida?</b><br>{fixed}</span>
+ <span class="kpi"><b>¿Monotonía restaurada?</b><br>{fixed}</span>
 </div>
 
 <h2>1. Actitud por perfil (OE2)</h2>
@@ -153,7 +153,7 @@ def _write_html(output_dir, results, comp, idx_naive, idx_corr, figures) -> str:
 {img('adaptive', 'El componente adaptativo reduce el drawdown en regímenes de estrés.')}
 
 <h2>5. Corrección de la inversión multicriterio (Artículo 3)</h2>
-{img('inversion', 'Tras la corrección espectral, mayor orness implica mayor riesgo realizado (monotonía restaurada).')}
+{img('inversion', 'Índice de inversión (Spearman orness → riesgo realizado) antes y después del blanqueo espectral. La corrección decorrelaciona los criterios; el índice diagnostica la inversión multicriterio. En este panel sintético genérico la decorrelación por sí sola no restaura la monotonía positiva (ver nota de alcance en spectral.py).')}
 
 <hr><p style="color:#777;font-size:.85rem">Quintero Avellaneda, D. — Universidad Nacional de Colombia, Sede Manizales.</p>
 </body></html>"""
