@@ -13,6 +13,32 @@ Este repositorio es el **frente único** que materializa y valida los objetivos 
 | **OE4** | **Validación empírica** (backtest) + producto de software de código abierto (tests, API, dashboard). |
 | **A3**  | **Corrección espectral** que evita la inversión multicriterio del inversor. |
 
+## Corrida definitiva del componente adaptativo IOWA (§8.4.3)
+
+El componente OE3 quedó formalmente diseñado desde el inicio (`adaptive.py`,
+`regimes.py`), pero su corrida definitiva sobre datos reales y series de
+régimen versionadas estaba pendiente. Esa corrida ya se ejecutó:
+
+- **Snapshot fechado y con checksum:** `data/iowa_snapshot_2026-08-31/` (25
+  emisores S&P 500, 17/18 emisores BVC, VIX y EPU de FRED). Ver
+  `data/iowa_snapshot_2026-08-31/MANIFEST.md`.
+- **Script reproducible:** `python scripts/induced_route.py` (reutiliza
+  íntegramente `Recommender`, `Backtester`, `adaptive.effective_orness` y
+  `regimes.stress_index/classify`; no reimplementa el núcleo).
+- **Resultados:** `results/iowa/` (CSV por ventana + JSON resumen) y figuras
+  en el mismo directorio.
+- **Interpretación completa, con hallazgos honestos (no solo favorables):**
+  [`docs/informe_iowa.md`](docs/informe_iowa.md).
+
+En síntesis: el IOWA reduce de forma estadísticamente significativa la
+volatilidad realizada y el drawdown en el mercado profundo (EE. UU.,
+p < 0,001 en ventanas de estrés), pero no muestra un efecto significativo en
+el mercado emergente (Colombia); y, en su calibración actual, sacrifica parte
+de la coherencia transversal entre perfiles durante el estrés a cambio de
+protección de nivel absoluto — un mecanismo identificado y documentado, no
+solo un número. Detalles, tablas completas y las cuatro figuras en el
+informe enlazado arriba.
+
 ---
 
 ## Instalación
