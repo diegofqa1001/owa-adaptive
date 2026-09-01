@@ -1,0 +1,64 @@
+{
+  "market": "CO",
+  "n_days": 2600,
+  "n_assets": 17,
+  "regime_fractions": {
+    "calma": 0.345,
+    "normal": 0.32384615384615384,
+    "estres": 0.23038461538461538,
+    "crisis": 0.10076923076923076
+  },
+  "testA_coherencia_condicional": {
+    "adaptive_stress": {
+      "mean_rho": -0.45296167247386754,
+      "nw_t": -2.8177109675291083,
+      "p_value_one_sided": 0.9975816336005403,
+      "n_windows": 41
+    },
+    "adaptive_calm": {
+      "mean_rho": -0.19953051643192493,
+      "nw_t": -1.8388367806966566,
+      "p_value_one_sided": 0.9670304016942936,
+      "n_windows": 71
+    },
+    "static_stress": {
+      "mean_rho": -0.08536585365853658,
+      "nw_t": -0.6103148882081866,
+      "p_value_one_sided": 0.7291733817964394,
+      "n_windows": 41
+    },
+    "static_calm": {
+      "mean_rho": 0.05030181086519116,
+      "nw_t": 0.512008649338871,
+      "p_value_one_sided": 0.3043224780917113,
+      "n_windows": 71
+    }
+  },
+  "testB_adaptacion_efectiva": {
+    "mean_reduction": 0.2633918091489893,
+    "nw_t": 14.457569808943157,
+    "p_value_one_sided": 1.1229419943547493e-47,
+    "n": 328,
+    "frac_alpha_eff_lt_base": 1.0
+  },
+  "testC_diebold_mariano": {
+    "stress_vol": {
+      "dm_stat": -0.880233497989269,
+      "p_value_one_sided": 0.8106335849180807,
+      "mean_diff": -0.0017208869272529763,
+      "T": 328
+    },
+    "stress_maxdd": {
+      "dm_stat": -0.13719262709102858,
+      "p_value_one_sided": 0.5545607307320579,
+      "mean_diff": -7.34163181006836e-05,
+      "T": 328
+    },
+    "all_windows_vol": {
+      "dm_stat": 1.0719085659574976,
+      "p_value_one_sided": 0.14188055118469156,
+      "mean_diff": 0.0009528031883571803,
+      "T": 896
+    }
+  }
+}
